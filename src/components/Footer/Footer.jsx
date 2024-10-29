@@ -6,7 +6,7 @@ import './Footer.css'
 const Footer = () => {
     return(
         <footer>
-        Developed bu Niko
+        Developed by Niko
    </footer>
     )
 }
