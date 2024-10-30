@@ -1,0 +1,45 @@
+.FilterFooter {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    margin-top: 20px;
+}
+.FilterFooter .FilterFooter__filters {
+    width: 100%;
+}
+.FilterFooter .FilterFooter__filters ul {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.FilterFooter .FilterFooter__countItems {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-right: 1px solid white;
+    width: 100%;
+    font-size: 15px;
+    padding: 5px;
+}
+.FilterFooter .FilterFooter__filters ul li button {
+    border: none;
+    background-color: white;
+    margin: 0 5px;
+    padding: 5px;
+    transition: 500ms;
+}
+.FilterFooter .FilterFooter__filters ul li button:hover {
+    border: none;
+    background-color: rgb(205, 43, 226);
+    color: white;
+}
+.FilterFooter .FilterFooter__filters ul li button :active{
+    border: none;
+    background-color: rgb(205, 43, 226);
+    color: white;
+}
