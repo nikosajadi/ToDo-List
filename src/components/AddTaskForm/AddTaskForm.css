@@ -14,7 +14,7 @@
     border-radius: 0;
 }
 .AddTaskForm input:focus {
-    border-color: #16a085;
+    border-color: #a01694;
     outline: none;
 }
 .AddTaskForm button {
@@ -24,8 +24,8 @@
     background-color: #eee;
 }
 .AddTaskForm button:hover {
-    border-color: #16a085;
-    background-color: #16a085;
+    border-color: #a01694;
+    background-color: #a01694;
     color: white;
     cursor: pointer;
     transition-duration: 500ms;
