@@ -2,13 +2,13 @@ import React from "react";
 import './TaskItem.css'
 import { FaFileExcel } from "react-icons/fa";
 
-const TaskItem = () => {
+const TaskItem = ({task}) => {
     return(
         
-            <li className="TaskItem">
-            <input  id="Task" type='checkbox'/>
-            <h2>Buld This APP</h2>
-            <button ><FaFileExcel /></button>
+            <li className="TaskItem ">
+                <input  id="Task" type='checkbox'/>
+                <h2>{task.title}</h2>
+                <button ><FaFileExcel /></button>
           </li>
 
     
