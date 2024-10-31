@@ -7,25 +7,37 @@ import { v4 as uuidv4 } from 'uuid';
 
 const TodoApp = () => {
    const [tasks,setTasks] = useState([]);
+   
+   useEffect(() => {
+    setTasks([
+        {
+            title: 'Default Task',
+            status: true, //boolean
+        },
+        {
+            title: 'Making lunch',
+            status: false, //boolean
+        },
+    ]);
+}, []);
 
-   useEffect (()=>{
+
+
+   const addTask = (taskTitle) => {
     setTasks ([
-        {   
+        ...tasks,
+        {
             id: uuidv4(),// ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
-            title:'Default title',
+            title: taskTitle,
             status: true //boolean,
-        },
-        {    id: uuidv4(), 
-            title:'book meeting',
-            status: false //boolean,
-        },
+        }
      ]);
-
-   },[])
+     
+   }
 
     return(
         <div className="TodoApp">
-              <AddTaskForm />
+              <AddTaskForm addTask={addTask}/>
               <TaskList tasks={tasks} />
               <FilterFooter />
 
