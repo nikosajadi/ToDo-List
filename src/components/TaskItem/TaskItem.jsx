@@ -6,7 +6,7 @@ const TaskItem = ({task}) => {
     return(
         
             <li className="TaskItem ">
-                <input  id="Task" type='checkbox'/>
+                <input  id="Task" type='checkbox'  checked ={task.status}/>
                 <h2>{task.title}</h2>
                 <button ><FaFileExcel /></button>
           </li>
