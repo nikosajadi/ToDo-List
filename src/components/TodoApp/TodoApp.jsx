@@ -19,9 +19,7 @@ const TodoApp = () => {
             status: false, //boolean
         },
     ]);
-}, []);
-
-
+}, []); 
 
    const addTask = (taskTitle) => {
     setTasks ([
@@ -34,12 +32,18 @@ const TodoApp = () => {
      ]);
      
    }
-
+   const deleteTask = (taskId) => {
+    let newTasksList = tasks
+    delete newTasksList[tasks.findIndex((task) => task.id === taskId)];
+    newTasksList= newTasksList.filter((item) => item);
+    setTasks(newTasksList);
+  
+}
     return(
         <div className="TodoApp">
               <AddTaskForm addTask={addTask}/>
-              <TaskList tasks={tasks} />
-              <FilterFooter />
+              <TaskList tasks={tasks} deleteTask={deleteTask}/>
+              <FilterFooter  />
 
     
         </div>
