@@ -43,7 +43,7 @@ const TodoApp = () => {
         <div className="TodoApp">
               <AddTaskForm addTask={addTask}/>
               <TaskList tasks={tasks} deleteTask={deleteTask}/>
-              <FilterFooter  />
+              <FilterFooter tasks={tasks} />
 
     
         </div>

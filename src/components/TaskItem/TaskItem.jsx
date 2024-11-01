@@ -9,10 +9,10 @@ const TaskItem = ({task, deleteTask}) => {
                 <input  id="Task" type='checkbox'  checked ={task.status}/>
                 <h2>{task.title}</h2>
                 <button
-      onClick={() => {
-        deleteTask(task.id);
-      }}
-    ><FaFileExcel /></button>
+                  onClick={() => {
+                 deleteTask(task.id);
+                 }}
+                ><FaFileExcel /></button>
           </li>
 
     

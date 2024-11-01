@@ -4,10 +4,10 @@ import './FilterFooter.css'
 
 
 
-const FilterFooter = () => {
+const FilterFooter = ({tasks}) => {
 return (
     <div className="FilterFooter">
-       <div className="FilterFooter__countItems"> 2 item </div>
+       <div className="FilterFooter__countItems"> {tasks.length} </div>
        <div className="FilterFooter__filters">
     <ul>
       <li><button>All</button></li>
