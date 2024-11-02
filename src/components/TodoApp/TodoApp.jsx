@@ -6,49 +6,58 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoApp = () => {
-   const [tasks,setTasks] = useState([]);
-   
+   const [tasks, setTasks] = useState([]);
+   const [filter, setFilter] = useState('all');
+   const [filteredTasks, setFilteredTasks] = useState([]);
+
    useEffect(() => {
-    setTasks([
-        {
+      setTasks([
+         {
+            id: uuidv4(),
             title: 'Default Task',
-            status: true, //boolean
-        },
-        {
+            status: true, // true = completed, false = active
+         },
+         {
+            id: uuidv4(),
             title: 'Making lunch',
-            status: false, //boolean
-        },
-    ]);
-}, []); 
+            status: false, // active
+         },
+      ]);
+   }, []);
+    
+   useEffect(() => {
+      if (filter === "all") {
+         setFilteredTasks(tasks);
+      } else if (filter === "completed") {
+         setFilteredTasks(tasks.filter((task) => task.status));
+      } else if (filter === "active") {
+         setFilteredTasks(tasks.filter((task) => !task.status));
+      }
+   }, [filter, tasks]);
 
    const addTask = (taskTitle) => {
-    setTasks ([
-        ...tasks,
-        {
-            id: uuidv4(),// ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+      setTasks([
+         ...tasks,
+         {
+            id: uuidv4(),
             title: taskTitle,
-            status: true //boolean,
-        }
-     ]);
-     
-   }
+            status: false // new tasks are initially active
+         }
+      ]);
+   };
+
    const deleteTask = (taskId) => {
-    let newTasksList = tasks
-    delete newTasksList[tasks.findIndex((task) => task.id === taskId)];
-    newTasksList= newTasksList.filter((item) => item);
-    setTasks(newTasksList);
-  
-}
-    return(
-        <div className="TodoApp">
-              <AddTaskForm addTask={addTask}/>
-              <TaskList tasks={tasks} deleteTask={deleteTask}/>
-              <FilterFooter tasks={tasks} />
+      const newTasksList = tasks.filter((task) => task.id !== taskId);
+      setTasks(newTasksList);
+   };
 
-    
-        </div>
-        )
-
-}
+   return (
+      <div className="TodoApp">
+         <AddTaskForm addTask={addTask} />
+         <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
+         <FilterFooter updateFilter={setFilter} tasks={filteredTasks} />
+      </div>
+   );
+};
 
 export default TodoApp;
