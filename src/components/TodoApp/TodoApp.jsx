@@ -50,11 +50,16 @@ const TodoApp = () => {
       const newTasksList = tasks.filter((task) => task.id !== taskId);
       setTasks(newTasksList);
    };
-
+   const handleChangeStatus = (taskId) => {
+    const newTasksList = tasks.map((task) =>
+       task.id === taskId ? { ...task, status: !task.status } : task
+    );
+    setTasks(newTasksList);
+ };
    return (
       <div className="TodoApp">
          <AddTaskForm addTask={addTask} />
-         <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
+         <TaskList tasks={filteredTasks} deleteTask={deleteTask}  handleChangeStatus={handleChangeStatus} />
          <FilterFooter updateFilter={setFilter} tasks={filteredTasks} />
       </div>
    );
