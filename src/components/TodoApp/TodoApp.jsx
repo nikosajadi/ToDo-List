@@ -10,20 +10,15 @@ const TodoApp = () => {
    const [filter, setFilter] = useState('all');
    const [filteredTasks, setFilteredTasks] = useState([]);
 
-   useEffect(() => {
-      setTasks([
-         {
-            id: uuidv4(),
-            title: 'Default Task',
-            status: true, // true = completed, false = active
-         },
-         {
-            id: uuidv4(),
-            title: 'Making lunch',
-            status: false, // active
-         },
-      ]);
-   }, []);
+   useEffect(()=>{
+      let storedTasks = localStorage.getItem('tasks')
+      if (storedTasks){ 
+          storedTasks = JSON.parse(storedTasks);
+      }else {
+        storedTasks = []
+      }
+      setTasks(storedTasks);
+  },[])
     
    useEffect(() => {
       if (filter === "all") {
