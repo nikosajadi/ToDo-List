@@ -2,21 +2,25 @@
 import React, { useState } from "react";
 import "./AddTaskForm.css";
 
-const AddTaskForm = ({addTask}) => {
-    const [value,setValue] = useState('')
-    const handleChange  = (event) => {
-        if(event) event.preventDefault();
-        setValue(event.target.value)
-    } 
-    console.log ("value",value)
+
+const AddTaskForm = ({ addTask }) => {
+    const [value, setValue] = useState('');
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+        console.log("Value while typing:", event.target.value);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent form from refreshing the page
-        if (!value || value === "") {
+        if (!value.trim()) {
             return;
         }
-        addTask(value);
+        addTask(value.trim());
         setValue(''); // Clear the input after submission
+        console.log("Input cleared:", value); // Check the value after clearing
     };
+
     return(
         <div className="AddTaskForm">
         <form onSubmit={handleSubmit}>
