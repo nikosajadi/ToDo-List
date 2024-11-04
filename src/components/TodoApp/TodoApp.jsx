@@ -3,7 +3,7 @@ import AddTaskForm from "../AddTaskForm/AddTaskForm";
 import FilterFooter from "../FilterFooter/FilterFooter";
 import "./TodoApp.css";
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { stringify, v4 as uuidv4 } from 'uuid';
 
 const TodoApp = () => {
    const [tasks, setTasks] = useState([]);
@@ -36,25 +36,30 @@ const TodoApp = () => {
    }, [filter, tasks]);
 
    const addTask = (taskTitle) => {
-      setTasks([
+      const newTasks = [
          ...tasks,
          {
             id: uuidv4(),
             title: taskTitle,
             status: false // new tasks are initially active
          }
-      ]);
+      ];
+      setTasks(newTasks);
+      localStorage.setItem("tasks", JSON.stringify(newTasks));
+
    };
 
    const deleteTask = (taskId) => {
       const newTasksList = tasks.filter((task) => task.id !== taskId);
       setTasks(newTasksList);
+      localStorage.setItem("tasks", JSON.stringify(newTasksList));
    };
    const handleChangeStatus = (taskId) => {
     const newTasksList = tasks.map((task) =>
        task.id === taskId ? { ...task, status: !task.status } : task
     );
     setTasks(newTasksList);
+    localStorage.setItem("tasks", JSON.stringify(newTasksList));
  };
    return (
       <div className="TodoApp">
