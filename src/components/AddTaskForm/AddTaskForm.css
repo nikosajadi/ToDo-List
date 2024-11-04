@@ -10,23 +10,23 @@
     height: 50px;
     font-size: 20px;
     padding: 5px 10px;
-    border: 1px solid #eee;
+    border: 1px solid rgb(224, 203, 82);
     border-radius: 0;
 }
 .AddTaskForm input:focus {
-    border-color: #a01694;
+    border-color: rgb(224, 203, 82);
     outline: none;
 }
 .AddTaskForm button {
     height: 50px;
     font-size: 20px;
-    border: 1px solid #eee;
-    background-color: #eee;
+    border: 1px solid rgb(224, 203, 82);
+    background-color: rgb(224, 203, 82);
 }
 .AddTaskForm button:hover {
-    border-color: #a01694;
-    background-color: #a01694;
-    color: white;
+    border-color: #655f07;
+    background-color: #655f07;
+    color: rgb(224, 203, 82);
     cursor: pointer;
     transition-duration: 500ms;
 }
